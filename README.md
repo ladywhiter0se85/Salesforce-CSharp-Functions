@@ -25,13 +25,3 @@ The project is structured into the following folders:
 ### 4. **Tests**
 
    - The `Tests` folder includes unit tests that use Moq and XUnit to validate the functionality of the Azure Functions and their associated services. The tests ensure that the logic works as expected and help maintain code quality.
-
-## Setup Instructions
-
-To get started with this project:
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone https://github.com/yourusername/Salesforce-CSharp-Functions.git
-   cd Salesforce-CSharp-Functions
