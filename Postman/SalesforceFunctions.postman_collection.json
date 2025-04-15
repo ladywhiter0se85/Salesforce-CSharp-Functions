@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "044bf1c6-09d2-4856-a7a1-3ae7af401cb2",
+		"name": "SalesforceFunctions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25389533"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "GET -  Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/accounts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -  Accounts By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/accounts/id/001gK000002OgxzQAC",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts",
+								"id",
+								"001gK000002OgxzQAC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -  Accounts By Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/accounts/filter/BillingState:CA,British Columbia?isAnd=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts",
+								"filter",
+								"BillingState:CA,British Columbia"
+							],
+							"query": [
+								{
+									"key": "isAnd",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-  Accounts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"attributes\": {\r\n            \"type\": \"Account\"\r\n        },\r\n        \"name\": \"CH Test Account Postman 1\",\r\n        \"phone\": \"588-454-5857\",\r\n        \"description\": \"CH Test Account Postman 1 Creation\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/accounts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH -  Accounts",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"attributes\": {\r\n            \"type\": \"Account\"\r\n        },\r\n        \"Id\": \"001gK0000040ymfQAA\",\r\n        \"Description\": \"CH Test Account Postman 1 Update\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/accounts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT -  Accounts",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"attributes\": {\r\n            \"type\": \"Account\"\r\n        },\r\n        \"Id\": \"001gK0000040ymfQAA\",\r\n        \"Description\": \"CH Test Account Postman 1 Upsert\"\r\n    },\r\n    {\r\n        \"attributes\": {\r\n            \"type\": \"Account\"\r\n        },\r\n        \"Name\": \"CH Test Account Postman 2\",\r\n        \"Description\": \"CH Test Account Postman 2 New\",\r\n        \"Phone\": \"252-585-6896\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/accounts/external/Id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts",
+								"external",
+								"Id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET - Open API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/openapi/v3.json",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"openapi",
+						"v3.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

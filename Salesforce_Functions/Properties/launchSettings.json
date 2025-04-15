@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Salesforce_Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7142",
+      "launchBrowser": false
+    }
+  }
+}

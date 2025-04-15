@@ -1,0 +1,760 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Salesforce Function App",
+        "description": "Salesforce API Function App",
+        "version": "V3"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:7071/api"
+        }
+    ],
+    "paths": {
+        "/accounts": {
+            "get": {
+                "summary": "Retrieve a list of Salesforce Accounts",
+                "description": "Retrieves all available Salesforce accounts with basic details.",
+                "operationId": "GetAccounts",
+                "responses": {
+                    "200": {
+                        "description": "Successful response with list of Salesforce Accounts",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/account"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountOne\"},\"id\":\"mockedAccountOneId\",\"name\":\"Mocked Account One\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"312 Constitution Place\\nAustin, TX 78767\\nUSA\",\"city\":\"Austin\",\"state\":\"TX\",\"country\":\"United States\",\"stateCode\":\"TX\",\"countryCode\":\"US\"},\"phone\":\"(512) 757-6000\",\"description\":\"Description for Mocked Account One.\",\"active__c\":\"Yes\"},{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountTwo\"},\"id\":\"mockedAccountTwoId\",\"name\":\"Mocked Account Two\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\"}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Salesforce Accounts",
+                "description": "Creates Salesforce accounts.",
+                "operationId": "PostAccounts",
+                "requestBody": {
+                    "description": "List of Account objects to create",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/account"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountOne\"},\"id\":\"mockedAccountOneId\",\"name\":\"Mocked Account One\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"312 Constitution Place\\nAustin, TX 78767\\nUSA\",\"city\":\"Austin\",\"state\":\"TX\",\"country\":\"United States\",\"stateCode\":\"TX\",\"countryCode\":\"US\"},\"phone\":\"(512) 757-6000\",\"description\":\"Description for Mocked Account One.\",\"active__c\":\"Yes\"},{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountTwo\"},\"id\":\"mockedAccountTwoId\",\"name\":\"Mocked Account Two\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedAccountId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Updates Salesforce Accounts",
+                "description": "Updates Salesforce accounts.",
+                "operationId": "PatchAccounts",
+                "requestBody": {
+                    "description": "List of Account objects to update",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/account"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountOne\"},\"id\":\"mockedAccountOneId\",\"name\":\"Mocked Account One\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"312 Constitution Place\\nAustin, TX 78767\\nUSA\",\"city\":\"Austin\",\"state\":\"TX\",\"country\":\"United States\",\"stateCode\":\"TX\",\"countryCode\":\"US\"},\"phone\":\"(512) 757-6000\",\"description\":\"Description for Mocked Account One.\",\"active__c\":\"Yes\"},{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountTwo\"},\"id\":\"mockedAccountTwoId\",\"name\":\"Mocked Account Two\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedAccountId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/id/{accountId}": {
+            "get": {
+                "summary": "Retrieve a Salesforce Account by Id",
+                "description": "Retrieves a Salesforce account by id with basic details.",
+                "operationId": "GetAccountById",
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "description": "Salesforce Account Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response with a Salesforce Account",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/account"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountOne\"},\"id\":\"mockedAccountOneId\",\"name\":\"Mocked Account One\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"312 Constitution Place\\nAustin, TX 78767\\nUSA\",\"city\":\"Austin\",\"state\":\"TX\",\"country\":\"United States\",\"stateCode\":\"TX\",\"countryCode\":\"US\"},\"phone\":\"(512) 757-6000\",\"description\":\"Description for Mocked Account One.\",\"active__c\":\"Yes\"}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/filter/{where}": {
+            "get": {
+                "summary": "Retrieve a Salesforce Accounts by Filter",
+                "description": "Retrieves Salesforce accounts by filter with basic details.",
+                "operationId": "GetAccountsByFilter",
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "path",
+                        "description": "Where Condition Filters",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "isAnd",
+                        "in": "query",
+                        "description": "Type of Condition Check AND/OR",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response with list of Salesforce Accounts",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/account"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountOne\"},\"id\":\"mockedAccountOneId\",\"name\":\"Mocked Account One\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"312 Constitution Place\\nAustin, TX 78767\\nUSA\",\"city\":\"Austin\",\"state\":\"TX\",\"country\":\"United States\",\"stateCode\":\"TX\",\"countryCode\":\"US\"},\"phone\":\"(512) 757-6000\",\"description\":\"Description for Mocked Account One.\",\"active__c\":\"Yes\"},{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountTwo\"},\"id\":\"mockedAccountTwoId\",\"name\":\"Mocked Account Two\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\"}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/external/{externalField}": {
+            "put": {
+                "summary": "Upsert Salesforce Accounts",
+                "description": "Upsert Salesforce accounts.",
+                "operationId": "PutAccounts",
+                "parameters": [
+                    {
+                        "name": "externalField",
+                        "in": "path",
+                        "description": "Salesforce External field used for upsert.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of Account objects to upsert",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/account"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountOne\"},\"id\":\"mockedAccountOneId\",\"name\":\"Mocked Account One\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"312 Constitution Place\\nAustin, TX 78767\\nUSA\",\"city\":\"Austin\",\"state\":\"TX\",\"country\":\"United States\",\"stateCode\":\"TX\",\"countryCode\":\"US\"},\"phone\":\"(512) 757-6000\",\"description\":\"Description for Mocked Account One.\",\"active__c\":\"Yes\"},{\"attributes\":{\"type\":\"Account\",\"url\":\"mockedURLAccountTwo\"},\"id\":\"mockedAccountTwoId\",\"name\":\"Mocked Account Two\",\"type\":\"Customer - Direct\",\"billingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedAccountId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "account": {
+                "type": "object",
+                "properties": {
+                    "attributes": {
+                        "$ref": "#/components/schemas/attributes"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "isDeleted": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "billingStreet": {
+                        "type": "string"
+                    },
+                    "billingCity": {
+                        "type": "string"
+                    },
+                    "billingState": {
+                        "type": "string"
+                    },
+                    "billingPostalCode": {
+                        "type": "string"
+                    },
+                    "billingCountry": {
+                        "type": "string"
+                    },
+                    "billingStateCode": {
+                        "type": "string"
+                    },
+                    "billingCountryCode": {
+                        "type": "string"
+                    },
+                    "billingLatitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "billingLongitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "billingGeocodeAccuracy": {
+                        "type": "string"
+                    },
+                    "billingAddress": {
+                        "$ref": "#/components/schemas/address"
+                    },
+                    "shippingStreet": {
+                        "type": "string"
+                    },
+                    "shippingCity": {
+                        "type": "string"
+                    },
+                    "shippingState": {
+                        "type": "string"
+                    },
+                    "shippingPostalCode": {
+                        "type": "string"
+                    },
+                    "shippingCountry": {
+                        "type": "string"
+                    },
+                    "shippingStateCode": {
+                        "type": "string"
+                    },
+                    "shippingCountryCode": {
+                        "type": "string"
+                    },
+                    "shippingLatitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "shippingLongitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "shippingGeocodeAccuracy": {
+                        "type": "string"
+                    },
+                    "shippingAddress": {
+                        "$ref": "#/components/schemas/address"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "fax": {
+                        "type": "string"
+                    },
+                    "accountNumber": {
+                        "type": "string"
+                    },
+                    "website": {
+                        "type": "string"
+                    },
+                    "photoUrl": {
+                        "type": "string"
+                    },
+                    "sic": {
+                        "type": "string"
+                    },
+                    "industry": {
+                        "type": "string"
+                    },
+                    "annualRevenue": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "numberOfEmployees": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "ownership": {
+                        "type": "string"
+                    },
+                    "tickerSymbol": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "string"
+                    },
+                    "site": {
+                        "type": "string"
+                    },
+                    "ownerId": {
+                        "type": "object"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createdById": {
+                        "type": "object"
+                    },
+                    "lastModifiedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastModifiedById": {
+                        "type": "object"
+                    },
+                    "systemModstamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastActivityDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastViewedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastReferencedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "jigsaw": {
+                        "type": "string"
+                    },
+                    "jigsawCompanyId": {
+                        "type": "string"
+                    },
+                    "cleanStatus": {
+                        "type": "string"
+                    },
+                    "accountSource": {
+                        "type": "string"
+                    },
+                    "dunsNumber": {
+                        "type": "string"
+                    },
+                    "tradestyle": {
+                        "type": "string"
+                    },
+                    "naicsCode": {
+                        "type": "string"
+                    },
+                    "naicsDesc": {
+                        "type": "string"
+                    },
+                    "yearStarted": {
+                        "type": "string"
+                    },
+                    "sicDesc": {
+                        "type": "string"
+                    },
+                    "dandbCompanyId": {
+                        "type": "object"
+                    },
+                    "operatingHoursId": {
+                        "type": "object"
+                    },
+                    "customerPriority__c": {
+                        "type": "string"
+                    },
+                    "slA__c": {
+                        "type": "string"
+                    },
+                    "active__c": {
+                        "type": "string"
+                    },
+                    "numberofLocations__c": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "upsellOpportunity__c": {
+                        "type": "string"
+                    },
+                    "slaSerialNumber__c": {
+                        "type": "string"
+                    },
+                    "slaExpirationDate__c": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "masterRecordId": {
+                        "$ref": "#/components/schemas/account"
+                    },
+                    "parentId": {
+                        "$ref": "#/components/schemas/account"
+                    }
+                }
+            },
+            "address": {
+                "type": "object",
+                "properties": {
+                    "attributes": {
+                        "$ref": "#/components/schemas/attributes"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "isDeleted": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createdById": {
+                        "type": "object"
+                    },
+                    "lastModifiedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastModifiedById": {
+                        "type": "object"
+                    },
+                    "systemModstamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "parentId": {
+                        "type": "object"
+                    },
+                    "locationType": {
+                        "type": "string"
+                    },
+                    "addressType": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "stateCode": {
+                        "type": "string"
+                    },
+                    "countryCode": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "geocodeAccuracy": {
+                        "type": "string"
+                    },
+                    "Address": {
+                        "type": "object",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "drivingDirections": {
+                        "type": "string"
+                    },
+                    "timeZone": {
+                        "type": "string"
+                    }
+                }
+            },
+            "attributes": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "operationResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "created": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

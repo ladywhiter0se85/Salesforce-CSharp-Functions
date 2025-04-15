@@ -1,0 +1,12 @@
+{
+    "EncryptionKey": "QWd1zkYA1ucX265/ks/EUA7S0KD7PaB2X32/On3w5So=",
+    "EncryptionIV": "ibW0CnrwwJsZySyEQZg41w==",
+    "ClientId": "AeA6Pnk9nUlaFvZXyJit3zB/yfr6t5f+26IZw8tTxaFPKq03GS1STYj5p4eWJWqqp4iPzcb8q8o/XnUALeus0Q==",
+    "ClientSecret": "AeA6Pnk9nUlaFvZXyJit3+cPazkSBid3X2ZnaYW1Zf0wg2lpwjJcmArsm1MNhzLrnwF3NmPQNcnjc9qwNu4RZA==",
+    "Username": "rLKVnXaMBxrn3t0QjYX3nfIqquF+uwoiQeHN+ZpdbBZ2RdGHddMCDQkyB25EkMD3",
+    "Password": "rLKVnXaMBxrn3t0QjYX3ndQm0UIfX5A1q9HgPVQbegM=",
+    "SecretToken": "rLKVnXaMBxrn3t0QjYX3nRa6Trzlem5i5WgJSrmLquD17IDuc9YdUDAIbVvBWLMy",
+    "LoginUrl": "https://login.salesforce.com",
+    "DomainUrl": "https://mocked-sf-dev-ed.develop.my.salesforce.com",
+    "Version": "58.0"
+}
