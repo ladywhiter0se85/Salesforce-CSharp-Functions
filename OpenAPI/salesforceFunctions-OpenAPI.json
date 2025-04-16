@@ -93,7 +93,7 @@
                                 },
                                 "examples": {
                                     "default": {
-                                        "value": "[{\"id\":\"mockedAccountId\",\"success\":true}]"
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
                                     }
                                 }
                             }
@@ -157,7 +157,7 @@
                                 },
                                 "examples": {
                                     "default": {
-                                        "value": "[{\"id\":\"mockedAccountId\",\"success\":true}]"
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
                                     }
                                 }
                             }
@@ -356,7 +356,381 @@
                                 },
                                 "examples": {
                                     "default": {
-                                        "value": "[{\"id\":\"mockedAccountId\",\"success\":true}]"
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/opportunities": {
+            "get": {
+                "summary": "Retrieve a list of Salesforce Opportunities",
+                "description": "Retrieves all available Salesforce opportunities with basic details.",
+                "operationId": "GetOpportunities",
+                "responses": {
+                    "200": {
+                        "description": "Successful response with list of Salesforce Opportunities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/opportunity"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdOne\",\"accountId\":\"mockedAccountIdOne\",\"name\":\"Mocked Opportunity One\",\"description\":\"Description for Mocked Opportunity One.\",\"stageName\":\"Qualification\",\"amount\":15000.0,\"totalOpportunityQuantity\":2.0,\"closeDate\":\"2025-02-01T00:00:00\",\"type\":\"New Customer\"},{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"name\":\"Mocked Opportunity Two\",\"description\":\"Description for Mocked Opportunity Two.\",\"stageName\":\"Negotiation/Review\",\"amount\":125000.0,\"totalOpportunityQuantity\":1.0,\"closeDate\":\"2025-01-20T00:00:00\",\"type\":\"Existing Customer - Upgrade\"}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Salesforce Opportunities",
+                "description": "Creates Salesforce opportunities.",
+                "operationId": "PostOpportunities",
+                "requestBody": {
+                    "description": "List of Opportunity objects to create",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/opportunity"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdOne\",\"accountId\":\"mockedAccountIdOne\",\"name\":\"Mocked Opportunity One\",\"description\":\"Description for Mocked Opportunity One.\",\"stageName\":\"Qualification\",\"amount\":15000.0,\"totalOpportunityQuantity\":2.0,\"closeDate\":\"2025-02-01T00:00:00\",\"type\":\"New Customer\"},{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"name\":\"Mocked Opportunity Two\",\"description\":\"Description for Mocked Opportunity Two.\",\"stageName\":\"Negotiation/Review\",\"amount\":125000.0,\"totalOpportunityQuantity\":1.0,\"closeDate\":\"2025-01-20T00:00:00\",\"type\":\"Existing Customer - Upgrade\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Updates Salesforce Opportunities",
+                "description": "Updates Salesforce opportunities.",
+                "operationId": "PatchOpportunities",
+                "requestBody": {
+                    "description": "List of Opportunity objects to update",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/opportunity"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdOne\",\"accountId\":\"mockedAccountIdOne\",\"name\":\"Mocked Opportunity One\",\"description\":\"Description for Mocked Opportunity One.\",\"stageName\":\"Qualification\",\"amount\":15000.0,\"totalOpportunityQuantity\":2.0,\"closeDate\":\"2025-02-01T00:00:00\",\"type\":\"New Customer\"},{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"name\":\"Mocked Opportunity Two\",\"description\":\"Description for Mocked Opportunity Two.\",\"stageName\":\"Negotiation/Review\",\"amount\":125000.0,\"totalOpportunityQuantity\":1.0,\"closeDate\":\"2025-01-20T00:00:00\",\"type\":\"Existing Customer - Upgrade\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/opportunities/id/{opportunityId}": {
+            "get": {
+                "summary": "Retrieve a Salesforce Opportunity by Id",
+                "description": "Retrieves a Salesforce opportunity by id with basic details.",
+                "operationId": "GetOpportunityById",
+                "parameters": [
+                    {
+                        "name": "opportunityId",
+                        "in": "path",
+                        "description": "Salesforce Opportunity Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response with a Salesforce Opportunity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/opportunity"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdOne\",\"accountId\":\"mockedAccountIdOne\",\"name\":\"Mocked Opportunity One\",\"description\":\"Description for Mocked Opportunity One.\",\"stageName\":\"Qualification\",\"amount\":15000.0,\"totalOpportunityQuantity\":2.0,\"closeDate\":\"2025-02-01T00:00:00\",\"type\":\"New Customer\"}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/opportunities/filter/{where}": {
+            "get": {
+                "summary": "Retrieve a Salesforce Opportunities by Filter",
+                "description": "Retrieves Salesforce opportunities by filter with basic details.",
+                "operationId": "GetOpportunitiesByFilter",
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "path",
+                        "description": "Where Condition Filters",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "isAnd",
+                        "in": "query",
+                        "description": "Type of Condition Check AND/OR",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response with list of Salesforce Opportunities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/opportunity"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdOne\",\"accountId\":\"mockedAccountIdOne\",\"name\":\"Mocked Opportunity One\",\"description\":\"Description for Mocked Opportunity One.\",\"stageName\":\"Qualification\",\"amount\":15000.0,\"totalOpportunityQuantity\":2.0,\"closeDate\":\"2025-02-01T00:00:00\",\"type\":\"New Customer\"},{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"name\":\"Mocked Opportunity Two\",\"description\":\"Description for Mocked Opportunity Two.\",\"stageName\":\"Negotiation/Review\",\"amount\":125000.0,\"totalOpportunityQuantity\":1.0,\"closeDate\":\"2025-01-20T00:00:00\",\"type\":\"Existing Customer - Upgrade\"}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/opportunities/external/{externalField}": {
+            "put": {
+                "summary": "Upsert Salesforce Opportunities",
+                "description": "Upsert Salesforce opportunities.",
+                "operationId": "PutOpportunities",
+                "parameters": [
+                    {
+                        "name": "externalField",
+                        "in": "path",
+                        "description": "Salesforce External field used for upsert.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of Opportunity objects to upsert",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/opportunity"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdOne\",\"accountId\":\"mockedAccountIdOne\",\"name\":\"Mocked Opportunity One\",\"description\":\"Description for Mocked Opportunity One.\",\"stageName\":\"Qualification\",\"amount\":15000.0,\"totalOpportunityQuantity\":2.0,\"closeDate\":\"2025-02-01T00:00:00\",\"type\":\"New Customer\"},{\"attributes\":{\"type\":\"Opportunity\"},\"id\":\"mockedOpportunityIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"name\":\"Mocked Opportunity Two\",\"description\":\"Description for Mocked Opportunity Two.\",\"stageName\":\"Negotiation/Review\",\"amount\":125000.0,\"totalOpportunityQuantity\":1.0,\"closeDate\":\"2025-01-20T00:00:00\",\"type\":\"Existing Customer - Upgrade\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
                                     }
                                 }
                             }
@@ -752,6 +1126,187 @@
                     },
                     "created": {
                         "type": "boolean"
+                    }
+                }
+            },
+            "opportunity": {
+                "type": "object",
+                "properties": {
+                    "attributes": {
+                        "$ref": "#/components/schemas/attributes"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "isDeleted": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "isPrivate": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "stageName": {
+                        "type": "string"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "probability": {
+                        "type": "object"
+                    },
+                    "expectedRevenue": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "totalOpportunityQuantity": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "closeDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "nextStep": {
+                        "type": "string"
+                    },
+                    "leadSource": {
+                        "type": "string"
+                    },
+                    "isClosed": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "isWon": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "forecastCategory": {
+                        "type": "string"
+                    },
+                    "forecastCategoryName": {
+                        "type": "string"
+                    },
+                    "campaignId": {
+                        "type": "object"
+                    },
+                    "hasOpportunityLineItem": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "pricebook2Id": {
+                        "type": "object"
+                    },
+                    "ownerId": {
+                        "type": "object"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createdById": {
+                        "type": "object"
+                    },
+                    "lastModifiedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastModifiedById": {
+                        "type": "object"
+                    },
+                    "systemModstamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastActivityDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "pushCount": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "lastStageChangeDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "fiscalQuarter": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "fiscalYear": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "fiscal": {
+                        "type": "string"
+                    },
+                    "contactId": {
+                        "type": "object"
+                    },
+                    "lastViewedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastReferencedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "hasOpenActivity": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "hasOverdueTask": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "lastAmountChangedHistoryId": {
+                        "type": "object"
+                    },
+                    "lastCloseDateChangedHistoryId": {
+                        "type": "object"
+                    },
+                    "deliveryInstallationStatus__c": {
+                        "type": "string"
+                    },
+                    "trackingNumber__c": {
+                        "type": "string"
+                    },
+                    "orderNumber__c": {
+                        "type": "string"
+                    },
+                    "currentGenerators__c": {
+                        "type": "string"
+                    },
+                    "mainCompetitors__c": {
+                        "type": "string"
                     }
                 }
             }

@@ -1,4 +1,8 @@
 User
 DandBCompany
 OperatingHours
-Location
+LocationAccount
+Percent
+Campaign
+Pricebook2
+Contact

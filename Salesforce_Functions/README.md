@@ -13,7 +13,6 @@ This project is an Azure Function App API designed to integrate with Salesforce,
 
 The goal of the app is to offer a lightweight, extendable backend service to interact with Salesforce programmatically, using clean endpoints and OpenAPI documentation.
 
-
 ---
 
 ## Table of Contents
@@ -41,7 +40,24 @@ The goal of the app is to offer a lightweight, extendable backend service to int
       - [Parameters](#parameters-2)
       - [Input Schema](#input-schema-2)
       - [Output Schema](#output-schema-5)
-
+    - [GET - `/opportunities`](#get---opportunities)
+      - [Output Schema](#output-schema-6)
+    - [GET - `/opportunities/id/{opportunityId}`](#get---opportunitiesidopportunityid)
+      - [Parameters](#parameters-3)
+      - [Output Schema](#output-schema-7)
+    - [GET - `/opportunities/filter/{where}`](#get---opportunitiesfilterwhere)
+      - [Parameters](#parameters-4)
+      - [Output Schema](#output-schema-8)
+    - [POST - `/opportunities`](#post---opportunities)
+      - [Input Schema](#input-schema-3)
+      - [Output Schema](#output-schema-9)
+    - [PATCH - `/opportunities`](#patch---opportunities)
+      - [Input Schema](#input-schema-4)
+      - [Output Schema](#output-schema-10)
+    - [PUT - `/opportunities/external`](#put---opportunitiesexternal)
+      - [Parameters](#parameters-5)
+      - [Input Schema](#input-schema-5)
+      - [Output Schema](#output-schema-11)
 
 ## Current Functions
 
@@ -53,6 +69,12 @@ This Function App exposes the following endpoints:
 4. **POST** `/accounts` – Returns a list of OperationResponse
 5. **PATCH** `/accounts` – Returns a list of OperationResponse
 6. **PUT** `/accounts/external` – Returns a list of OperationResponse
+7. **GET** `/opportunities` – Returns a list of Salesforce Opportunity objects
+8. **GET** `/opportunities/id/{opportunityId}` – Returns a Salesforce Opportunity object  
+9. **GET** `/opportunities/filter/{where}` – Returns a list of Salesforce Opportunity objects  
+10. **POST** `/opportunities` – Returns a list of OperationResponse
+11. **PATCH** `/opportunities` – Returns a list of OperationResponse
+12. **PUT** `/opportunities/external` – Returns a list of OperationResponse
 
 ---
 
@@ -303,6 +325,224 @@ Returns a list of `Operation Response` objects.
     },
     {
         "id": "mockedAccountIdTwo",
+        "success": true,
+        "created": true
+    }
+]
+```
+
+### GET - `/opportunities`
+
+Returns a list of Salesforce `Opportunity` objects.
+
+#### Output Schema
+
+```json
+[
+  {
+    "attributes": {
+      "type": "Opportunity"
+    },
+    "id": "mockedOpportunityIdOne",
+    "accountId": "mockedAccountIdOne",
+    "name": "Mocked Opportunity One",
+    "stageName": "Qualification",
+    "amount": 15000,
+    "closeDate": "2025-02-01T00:00:00",
+    "description": "Description for Mocked Opportunity One.",
+    "type": "New Customer"
+  },
+  {
+    "attributes": {
+      "type": "Opportunity"
+    },
+    "id": "mockedOpportunityIdTwo",
+    "accountId": "mockedAccountIdTwo",
+    "name": "Mocked Opportunity Two",
+    "stageName": "Negotiation/Review",
+    "amount": 125000,
+    "closeDate": "2025-01-20T00:00:00",
+    "description": "Description for Mocked Opportunity Two.",
+    "type": "Existing Customer - Upgrade"
+  }
+]
+```
+
+### GET - `/opportunities/id/{opportunityId}`
+
+Returns a Salesforce `Opportunity` object.
+
+#### Parameters
+
+| Parameter Name | Type   | Required | In    | Example            |
+|----------------|--------|----------|-------|--------------------|
+| opportunityId      | string | true     | path  | mockedOpportunityOneId |
+
+#### Output Schema
+
+```json
+{
+  "attributes": {
+    "type": "Opportunity"
+  },
+  "id": "mockedOpportunityIdOne",
+  "accountId": "mockedAccountIdOne",
+  "name": "Mocked Opportunity One",
+  "stageName": "Qualification",
+  "amount": 15000,
+  "closeDate": "2025-02-01T00:00:00",
+  "description": "Description for Mocked Opportunity One.",
+  "type": "New Customer"
+}
+```
+
+### GET - `/opportunities/filter/{where}`
+
+Returns a list of Salesforce `Opportunity` objects.
+
+#### Parameters
+
+| Parameter Name | Type   | Required | In    | Example         |
+|----------------|--------|----------|-------|-----------------|
+| where          | string | true     | path  | stageName:Qualification |
+| isAnd          | bool   | true     | query | true            |
+
+#### Output Schema
+
+```json
+[
+  {
+    "attributes": {
+      "type": "Opportunity"
+    },
+    "id": "mockedOpportunityIdOne",
+    "accountId": "mockedAccountIdOne",
+    "name": "Mocked Opportunity One",
+    "stageName": "Qualification",
+    "amount": 15000,
+    "closeDate": "2025-02-01T00:00:00",
+    "description": "Description for Mocked Opportunity One.",
+    "type": "New Customer"
+  },
+  {
+    "attributes": {
+      "type": "Opportunity"
+    },
+    "id": "mockedOpportunityIdTwo",
+    "accountId": "mockedAccountIdTwo",
+    "name": "Mocked Opportunity Two",
+    "stageName": "Negotiation/Review",
+    "amount": 125000,
+    "closeDate": "2025-01-20T00:00:00",
+    "description": "Description for Mocked Opportunity Two.",
+    "type": "Existing Customer - Upgrade"
+  }
+]
+```
+
+### POST - `/opportunities`
+
+Returns a list of `Operation Response` objects.
+
+#### Input Schema
+
+```json
+[
+    {
+        "attributes": {
+            "type": "Opportunity"
+        },
+        "name": "Mocked Salesforce Opportunity",
+        "description": "Mocked Salesforce Opportunity Creation",
+        "stageName": "Qualification",
+        "closeDate": "2025-04-15"
+    }
+]
+```
+
+#### Output Schema
+
+```json
+[
+    {
+        "id": "mockedOpportunityId",
+        "success": true
+    }
+]
+```
+
+### PATCH - `/opportunities`
+
+Returns a list of `Operation Response` objects.
+
+#### Input Schema
+
+```json
+[
+    {
+        "attributes": {
+            "type": "Opportunity"
+        },
+        "id": "mockedOpportunityId",
+        "description": "Mocked Salesforce Opportunity Update"
+    }
+]
+```
+
+#### Output Schema
+
+```json
+[
+    {
+        "id": "mockedOpportunityId",
+        "success": true
+    }
+]
+```
+
+### PUT - `/opportunities/external`
+
+Returns a list of `Operation Response` objects.
+
+#### Parameters
+
+| Parameter Name | Type   | Required | In    | Example |
+|----------------|--------|----------|-------|---------|
+| externalField  | string | true     | path  | Id      |
+
+#### Input Schema
+
+```json
+[
+    {
+        "attributes": {
+            "type": "Opportunity"
+        },
+        "id": "mockedExistingOpportunityId",
+        "description": "Mocked Salesforce Opportunity Upsert"
+    },
+    {
+        "attributes": {
+            "type": "Opportunity"
+        },
+        "name": "Mocked Salesforce Opportunity",
+        "description": "Mocked Salesforce Opportunity Creation",
+        "stageName": "Needs Analysis",
+        "closeDate": "2025-04-15",
+    }
+]
+```
+
+#### Output Schema
+
+```json
+[
+    {
+        "id": "mockedOpportunityId",
+        "success": true
+    },
+    {
+        "id": "mockedOpportunityIdTwo",
         "success": true,
         "created": true
     }

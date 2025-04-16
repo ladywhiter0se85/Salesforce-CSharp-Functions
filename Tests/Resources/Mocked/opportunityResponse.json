@@ -1,0 +1,14 @@
+{
+    "attributes": {
+        "type": "Opportunity"
+    },
+    "Id": "mockedOpportunityIdOne",
+    "Name": "Mocked Opportunity One",
+    "AccountId": "mockedAccountIdOne",
+    "Amount": 15000,
+    "CloseDate": "2025-02-01",
+    "Description": "Description for Mocked Opportunity One.",
+    "TotalOpportunityQuantity": 2,
+    "StageName": "Qualification",
+    "Type": "New Customer"
+}

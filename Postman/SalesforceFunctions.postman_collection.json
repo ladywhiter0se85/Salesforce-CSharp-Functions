@@ -153,6 +153,152 @@
 			]
 		},
 		{
+			"name": "Opportunities",
+			"item": [
+				{
+					"name": "GET -  Opportunities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/opportunities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"opportunities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -  Opportunities By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/opportunities/id/006gK000000J5DhQAK",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"opportunities",
+								"id",
+								"006gK000000J5DhQAK"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -  Opportunities By Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/opportunities/filter/StageName:Closed Won&Type:New Customer?isAnd=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"opportunities",
+								"filter",
+								"StageName:Closed Won&Type:New Customer"
+							],
+							"query": [
+								{
+									"key": "isAnd",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-  Opportunities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"attributes\": {\r\n            \"type\": \"Opportunity\"\r\n        },\r\n        \"name\": \"CH Test Opp 2\",\r\n        \"amount\": \"35000\",\r\n        \"description\": \"CH Test Opp 2 Creation\",\r\n        \"stageName\": \"Qualification\",\r\n        \"closeDate\": \"2025-04-15\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/opportunities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"opportunities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH -  Opportunities",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"attributes\": {\r\n            \"type\": \"Opportunity\"\r\n        },\r\n        \"Id\": \"006gK000001KlJxQAK\",\r\n        \"Description\": \"CH Test Opp 2 Update\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/opportunities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"opportunities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT -  Opportunities",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"attributes\": {\r\n      \"type\": \"Opportunity\"\r\n    },\r\n    \"id\": \"006gK000001KdgHQAS\",\r\n    \"description\": \"CH Test Opp 1 Upsert\",\r\n    \"accountId\": \"001gK00000391O9QAI\"\r\n  },\r\n  {\r\n    \"attributes\": {\r\n      \"type\": \"Opportunity\"\r\n    },\r\n    \"name\": \"CH Test Opp 3\",\r\n    \"description\": \"CH Test Opp 3 New\",\r\n    \"stageName\": \"Needs Analysis\",\r\n    \"closeDate\": \"2025-04-15\",\r\n    \"accountId\": \"001gK00000395JiQAI\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/opportunities/external/Id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"opportunities",
+								"external",
+								"Id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "GET - Open API",
 			"request": {
 				"method": "GET",

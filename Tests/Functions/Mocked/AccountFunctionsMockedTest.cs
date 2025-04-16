@@ -137,7 +137,7 @@ namespace Tests.Functions.Mocked
 
             var resp = await FunctionsUtility.GetBodyFromStream<List<OperationResponse>>(accountsResponse.Body);
             Assert.NotNull(resp);
-            Assert.Equal("mockedAccountId", resp[0].Id);
+            Assert.Equal("mockedSObjectId", resp[0].Id);
         }
 
         [Fact]
@@ -175,7 +175,7 @@ namespace Tests.Functions.Mocked
 
             var resp = await FunctionsUtility.GetBodyFromStream<List<OperationResponse>>(accountsResponse.Body);
             Assert.NotNull(resp);
-            Assert.Equal("mockedAccountId", resp[0].Id);
+            Assert.Equal("mockedSObjectId", resp[0].Id);
         }
 
         [Fact]
@@ -233,7 +233,7 @@ namespace Tests.Functions.Mocked
 
             var resp = await FunctionsUtility.GetBodyFromStream<List<OperationResponse>>(accountsResponse.Body);
             Assert.NotNull(resp);
-            Assert.Equal("mockedAccountId", resp[0].Id);
+            Assert.Equal("mockedSObjectId", resp[0].Id);
         }
 
         [Fact]
