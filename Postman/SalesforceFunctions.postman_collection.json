@@ -302,7 +302,7 @@
 			"name": "Describes",
 			"item": [
 				{
-					"name": "GET -  Accounts By Filter",
+					"name": "GET -  Describes",
 					"request": {
 						"method": "GET",
 						"header": [],
