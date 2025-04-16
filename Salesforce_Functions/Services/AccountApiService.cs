@@ -29,7 +29,7 @@ namespace Salesforce_Functions.Services
 
         public async Task<ApiResponse<List<Account>>> GetAccountsByFilterAsync(string filter, bool isAnd)
         {
-            return await ServiceUtility.GetSObjectResponseAsync<List<Account>, List<Account>>(_apiService, _logger, _sObjectName, AccountQueries.GetAccountByFilterQuery + ServiceUtility.BuildWhereFilter(filter, isAnd), convertResponse: result => result);
+            return await ServiceUtility.GetSObjectResponseAsync<List<Account>, List<Account>>(_apiService, _logger, _sObjectName, AccountQueries.GetAccountsByFilterQuery + ServiceUtility.BuildWhereFilter(filter, isAnd), convertResponse: result => result);
         }
 
         public async Task<ApiResponse<List<OperationResponse>>> PostAccountsAsync(string body)

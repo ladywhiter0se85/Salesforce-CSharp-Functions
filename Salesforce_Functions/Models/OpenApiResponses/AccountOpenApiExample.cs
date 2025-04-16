@@ -9,9 +9,9 @@ namespace Salesforce_Functions.Models
     {
         public override IOpenApiExample<Account> Build(NamingStrategy namingStrategy)
         {
-            string accountsExampleJson = "Resources/OpenApiExamples/accountOASExample.json";
-            var accountsExample = ResponseUtility.ReadFileToCompactJson<Account>(accountsExampleJson);
-            Examples.Add(OpenApiExampleResolver.Resolve("default", accountsExample));
+            string accountExampleJson = "Resources/OpenApiExamples/accountOASExample.json";
+            var accountExample = ResponseUtility.ReadFileToCompactJson<Account>(accountExampleJson);
+            Examples.Add(OpenApiExampleResolver.Resolve("default", accountExample));
             return this;
         }
     }
