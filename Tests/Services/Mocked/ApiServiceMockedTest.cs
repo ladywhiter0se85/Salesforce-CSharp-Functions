@@ -30,6 +30,18 @@ public class ApiServiceMockedTest(ApiServiceMockedFixture apiServiceFixture) : I
     }
 
     [Fact]
+    public async Task GetDescribeAsyncTest()
+    {
+        var describeResponse = ResponseUtility.ReadFile("Resources/Mocked/Describe/describeSFResponse.json");
+
+        _apiService.Setup(x => x.GetDescribeAsync(_accessToken, "Account")).ReturnsAsync(describeResponse);
+
+        var resp = await _apiService.Object.GetDescribeAsync(_accessToken, "Account");
+        Assert.NotNull(resp);
+        Assert.Equal(describeResponse, resp);
+    }
+
+    [Fact]
     public async Task PostAccountRequesAsyncTest()
     {
         var body = "[{\"attributes\":{\"type\":\"Account\"},\"Name\":\"CH Test Account 2\",\"Phone\":\"555-444-5855\",\"Description\":\"CH Test Account 2 Creation\"}]";

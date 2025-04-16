@@ -64,6 +64,20 @@ namespace Salesforce_Functions.Services
             return responseContent;
         }
 
+        public async Task<string> GetDescribeAsync(string accessToken, string sObjectName)
+        {
+            _logger.LogInformation($"Requesting Salesforce Describe for: {sObjectName}.");
+            string url = _requestURL + $"/sobjects/{sObjectName}/describe";
+
+            var httpClient = BuildHttpClient(accessToken);
+
+            // Send the GET Describe request
+            var response = await httpClient.GetAsync(url);
+            var responseContent = await ValidateResponse(response);
+            _logger.LogInformation($"Salesforce Describe for: {sObjectName} request complete.");
+            return responseContent;
+        }
+
         public async Task<string> PostRequesAsynct(string accessToken, string sObjectName, string data)
         {
             _logger.LogInformation($"Creating Salesforce Objects: {sObjectName}.");

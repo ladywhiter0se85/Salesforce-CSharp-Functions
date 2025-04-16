@@ -299,6 +299,34 @@
 			]
 		},
 		{
+			"name": "Describes",
+			"item": [
+				{
+					"name": "GET -  Describes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/describes?sObjects=Account,Opportunity",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"describes"
+							],
+							"query": [
+								{
+									"key": "sObjects",
+									"value": "Account,Opportunity"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Opportunities",
 			"item": [
 				{

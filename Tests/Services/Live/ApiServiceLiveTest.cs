@@ -25,6 +25,14 @@ public class ApiServiceLiveTest(ApiServiceLiveFixture apiServiceFixture) : IClas
     }
 
     [Fact]
+    public async Task GetDescribeAsyncTest()
+    {
+        await Initialize();
+        var resp = await _apiService.GetDescribeAsync(_accessToken!, "Account");
+        Assert.NotNull(resp);
+    }
+
+    [Fact]
     public async Task PostAccountRequesAsyncTest()
     {
         await Initialize();
