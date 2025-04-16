@@ -76,6 +76,9 @@ The goal of the app is to offer a lightweight, extendable backend service to int
       - [Parameters](#parameters-8)
       - [Input Schema](#input-schema-8)
       - [Output Schema](#output-schema-17)
+    - [GET - `/describes`](#get---describes)
+      - [Parameters](#parameters-9)
+      - [Output Schema](#output-schema-18)
 
 ## Current Functions
 
@@ -99,6 +102,7 @@ This Function App exposes the following endpoints:
 16. **POST** `/contacts` – Returns a list of OperationResponse
 17. **PATCH** `/contacts` – Returns a list of OperationResponse
 18. **PUT** `/contacts/external` – Returns a list of OperationResponse
+19. **GET** `/describes` – Returns a list of Salesforce Describe objects
 
 ---
 
@@ -834,4 +838,211 @@ Returns a list of `Operation Response` objects.
         "created": true
     }
 ]
+```
+
+### GET - `/describes`
+
+Returns a list of Salesforce `Describe` objects.
+
+#### Parameters
+
+| Parameter Name | Type   | Required | In    | Example         |
+|----------------|--------|----------|-------|-----------------|
+| sObjects          | string   | true     | query | Contact,Opportunity            |
+
+#### Output Schema
+
+```json
+{
+    "account": [
+        {
+            "name": "Id",
+            "label": "Account ID",
+            "type": "id",
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "IsDeleted",
+            "label": "Deleted",
+            "type": "boolean",
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "MasterRecordId",
+            "label": "Master Record ID",
+            "type": "reference",
+            "nillable": true,
+            "referenceTo": [
+                "Account"
+            ],
+            "relationshipName": "MasterRecord"
+        },
+        {
+            "name": "Name",
+            "label": "Account Name",
+            "type": "string",
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "Type",
+            "label": "Account Type",
+            "type": "picklist",
+            "nillable": true,
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        }
+    ],
+    "opportunity": [
+        {
+            "name": "Id",
+            "label": "Opportunity ID",
+            "type": "id",
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "IsDeleted",
+            "label": "Deleted",
+            "type": "boolean",
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "AccountId",
+            "label": "Account ID",
+            "type": "reference",
+            "nillable": true,
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [
+                "Account"
+            ],
+            "relationshipName": "Account"
+        },
+        {
+            "name": "IsPrivate",
+            "label": "Private",
+            "type": "boolean",
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "Name",
+            "label": "Name",
+            "type": "string",
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "Description",
+            "label": "Description",
+            "type": "textarea",
+            "nillable": true,
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "StageName",
+            "label": "Stage",
+            "type": "picklist",
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "Amount",
+            "label": "Amount",
+            "type": "currency",
+            "nillable": true,
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "CloseDate",
+            "label": "Close Date",
+            "type": "date",
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "Type",
+            "label": "Opportunity Type",
+            "type": "picklist",
+            "nillable": true,
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "LeadSource",
+            "label": "Lead Source",
+            "type": "picklist",
+            "nillable": true,
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "IsClosed",
+            "label": "Closed",
+            "type": "boolean",
+            "referenceTo": [],
+            "relationshipName": ""
+        },
+        {
+            "name": "Pricebook2Id",
+            "label": "Price Book ID",
+            "type": "reference",
+            "nillable": true,
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [
+                "Pricebook2"
+            ],
+            "relationshipName": "Pricebook2"
+        },
+        {
+            "name": "OwnerId",
+            "label": "Owner ID",
+            "type": "reference",
+            "createable": true,
+            "updateable": true,
+            "referenceTo": [
+                "User"
+            ],
+            "relationshipName": "Owner"
+        },
+        {
+            "name": "ContactId",
+            "label": "Contact ID",
+            "type": "reference",
+            "nillable": true,
+            "createable": true,
+            "referenceTo": [
+                "Contact"
+            ],
+            "relationshipName": ""
+        }
+    ]
+}
 ```

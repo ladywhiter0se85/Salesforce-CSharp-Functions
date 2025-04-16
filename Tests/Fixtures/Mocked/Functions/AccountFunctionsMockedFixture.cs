@@ -5,9 +5,9 @@ namespace Tests.Fixtures
         public Task<HttpResponseData> GetAccounts([HttpTrigger(AuthorizationLevel.Function, "get", Route = "accounts")] HttpRequestData req);
         public Task<HttpResponseData> GetAccountById([HttpTrigger(AuthorizationLevel.Function, "get", Route = "accounts/{accountId}")] HttpRequestData req, string accountId);
         public Task<HttpResponseData> GetAccountsByFilter([HttpTrigger(AuthorizationLevel.Function, "get", Route = "accounts/filter/{where}")] HttpRequestData req, string where, bool? isAnd);
-        Task<HttpResponseData> PostAccounts([HttpTrigger(AuthorizationLevel.Function, "post", Route = "accounts")] HttpRequestData req);
-        Task<HttpResponseData> PatchAccounts([HttpTrigger(AuthorizationLevel.Function, "patch", Route = "accounts")] HttpRequestData req);
-        Task<HttpResponseData> PutAccounts([HttpTrigger(AuthorizationLevel.Function, "put", Route = "accounts/external/{externalField}")] HttpRequestData req, string externalField);
+        public Task<HttpResponseData> PostAccounts([HttpTrigger(AuthorizationLevel.Function, "post", Route = "accounts")] HttpRequestData req);
+        public Task<HttpResponseData> PatchAccounts([HttpTrigger(AuthorizationLevel.Function, "patch", Route = "accounts")] HttpRequestData req);
+        public Task<HttpResponseData> PutAccounts([HttpTrigger(AuthorizationLevel.Function, "put", Route = "accounts/external/{externalField}")] HttpRequestData req, string externalField);
     }
 
     public class AccountFunctionsMockedFixture : IDisposable
