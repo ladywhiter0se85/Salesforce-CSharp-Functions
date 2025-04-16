@@ -164,9 +164,9 @@ Returns a Salesforce `Account` object.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example            |
-|----------------|--------|----------|-------|--------------------|
-| accountId      | string | true     | path  | mockedAccountOneId |
+| Parameter Name | Type   | Required | In   | Example            |
+|----------------|--------|----------|------|--------------------|
+| accountId      | string | true     | path | mockedAccountOneId |
 
 #### Output Schema
 
@@ -317,9 +317,9 @@ Returns a list of `Operation Response` objects.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example |
-|----------------|--------|----------|-------|---------|
-| externalField  | string | true     | path  | Id      |
+| Parameter Name | Type   | Required | In   | Example |
+|----------------|--------|----------|------|---------|
+| externalField  | string | true     | path | Id      |
 
 #### Input Schema
 
@@ -402,9 +402,9 @@ Returns a Salesforce `Opportunity` object.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example            |
-|----------------|--------|----------|-------|--------------------|
-| opportunityId      | string | true     | path  | mockedOpportunityOneId |
+| Parameter Name | Type   | Required | In   | Example                |
+|----------------|--------|----------|------|------------------------|
+| opportunityId  | string | true     | path | mockedOpportunityOneId |
 
 #### Output Schema
 
@@ -430,10 +430,10 @@ Returns a list of Salesforce `Opportunity` objects.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example         |
-|----------------|--------|----------|-------|-----------------|
+| Parameter Name | Type   | Required | In    | Example                 |
+|----------------|--------|----------|-------|-------------------------|
 | where          | string | true     | path  | stageName:Qualification |
-| isAnd          | bool   | true     | query | true            |
+| isAnd          | bool   | true     | query | true                    |
 
 #### Output Schema
 
@@ -534,9 +534,9 @@ Returns a list of `Operation Response` objects.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example |
-|----------------|--------|----------|-------|---------|
-| externalField  | string | true     | path  | Id      |
+| Parameter Name | Type   | Required | In   | Example |
+|----------------|--------|----------|------|---------|
+| externalField  | string | true     | path | Id      |
 
 #### Input Schema
 
@@ -633,9 +633,9 @@ Returns a Salesforce `Contact` object.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example            |
-|----------------|--------|----------|-------|--------------------|
-| contactId      | string | true     | path  | mockedContactOneId |
+| Parameter Name | Type   | Required | In   | Example            |
+|----------------|--------|----------|------|--------------------|
+| contactId      | string | true     | path | mockedContactOneId |
 
 #### Output Schema
 
@@ -792,9 +792,9 @@ Returns a list of `Operation Response` objects.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example |
-|----------------|--------|----------|-------|---------|
-| externalField  | string | true     | path  | Id      |
+| Parameter Name | Type   | Required | In   | Example |
+|----------------|--------|----------|------|---------|
+| externalField  | string | true     | path | Id      |
 
 #### Input Schema
 
@@ -846,9 +846,9 @@ Returns a list of Salesforce `Describe` objects.
 
 #### Parameters
 
-| Parameter Name | Type   | Required | In    | Example         |
-|----------------|--------|----------|-------|-----------------|
-| sObjects          | string   | true     | query | Contact,Opportunity            |
+| Parameter Name | Type   | Required | In    | Example             |
+|----------------|--------|----------|-------|---------------------|
+| sObjects       | string | true     | query | Contact,Opportunity |
 
 #### Output Schema
 
