@@ -1,0 +1,46 @@
+[
+    {
+        "attributes": {
+            "type": "Contact"
+        },
+        "id": "mockedContactIdOne",
+        "salutation": "Mr.",
+        "firstName": "Mocked",
+        "lastName": "Contact One",
+        "name": "Mocked Contact One",
+        "accountId": "mockedAccountIdOne",
+        "email": "mockedContactOne@email.com",
+        "phone": "(336) 222-7000",
+        "description": "Mocked Contact One Desc",
+        "mailingAddress": {
+            "city": "Burlington",
+            "country": "USA",
+            "countryCode": "US",
+            "postalCode": "27215",
+            "state": "NC",
+            "stateCode": "NC",
+            "street": "525 S. Lexington Ave"
+        }
+    },
+    {
+        "attributes": {
+            "type": "Contact"
+        },
+        "id": "mockedContactIdTwo",
+        "salutation": "Ms.",
+        "firstName": "Mocked",
+        "lastName": "Contact Two",
+        "name": "Mocked Contact Two",
+        "accountId": "mockedAccountIdTwo",
+        "email": "mockedContactTwo@email.com",
+        "phone": "(014) 427-4427",
+        "description": "Mocked Contact Two Desc",
+        "mailingAddress": {
+            "city": "Paris",
+            "country": "France",
+            "countryCode": "FR",
+            "postalCode": "75251",
+            "street": "2 Place Jussieu"
+        }
+    }
+]

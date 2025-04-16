@@ -9,7 +9,7 @@ namespace Salesforce_Functions.Models
     {
         public override IOpenApiExample<Opportunity> Build(NamingStrategy namingStrategy)
         {
-            string opportunityExampleJson = "Resources/OpenApiExamples/opportunityOASExample.json";
+            string opportunityExampleJson = "Resources/OpenApiExamples/Opportunity/opportunityOASExample.json";
             var opportunityExample = ResponseUtility.ReadFileToCompactJson<Opportunity>(opportunityExampleJson);
             Examples.Add(OpenApiExampleResolver.Resolve("default", opportunityExample));
             return this;
@@ -19,7 +19,7 @@ namespace Salesforce_Functions.Models
     {
         public override IOpenApiExample<List<Opportunity>> Build(NamingStrategy namingStrategy)
         {
-            string opportunitiesExampleJson = "Resources/OpenApiExamples/opportunitiesOASExample.json";
+            string opportunitiesExampleJson = "Resources/OpenApiExamples/Opportunity/opportunitiesOASExample.json";
             var opportunitiesExample = ResponseUtility.ReadFileToCompactJson<List<Opportunity>>(opportunitiesExampleJson);
             Examples.Add(OpenApiExampleResolver.Resolve("default", opportunitiesExample));
             return this;

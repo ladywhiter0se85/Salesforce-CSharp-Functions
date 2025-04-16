@@ -385,6 +385,380 @@
                 }
             }
         },
+        "/contacts": {
+            "get": {
+                "summary": "Retrieve a list of Salesforce Contacts",
+                "description": "Retrieves all available Salesforce contacts with basic details.",
+                "operationId": "GetContacts",
+                "responses": {
+                    "200": {
+                        "description": "Successful response with list of Salesforce Contacts",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/contact"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdOne\",\"accountId\":\"mockedAccountIdOne\",\"lastName\":\"Contact One\",\"firstName\":\"Mocked\",\"salutation\":\"Mr.\",\"name\":\"Mocked Contact One\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\",\"email\":\"mockedContactOne@email.com\",\"description\":\"Mocked Contact One Desc\"},{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"lastName\":\"Contact Two\",\"firstName\":\"Mocked\",\"salutation\":\"Ms.\",\"name\":\"Mocked Contact Two\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"2 Place Jussieu\",\"city\":\"Paris\",\"postalCode\":\"75251\",\"country\":\"France\",\"countryCode\":\"FR\"},\"phone\":\"(014) 427-4427\",\"email\":\"mockedContactTwo@email.com\",\"description\":\"Mocked Contact Two Desc\"}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Salesforce Contacts",
+                "description": "Creates Salesforce contacts.",
+                "operationId": "PostContacts",
+                "requestBody": {
+                    "description": "List of Contact objects to create",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/contact"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdOne\",\"accountId\":\"mockedAccountIdOne\",\"lastName\":\"Contact One\",\"firstName\":\"Mocked\",\"salutation\":\"Mr.\",\"name\":\"Mocked Contact One\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\",\"email\":\"mockedContactOne@email.com\",\"description\":\"Mocked Contact One Desc\"},{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"lastName\":\"Contact Two\",\"firstName\":\"Mocked\",\"salutation\":\"Ms.\",\"name\":\"Mocked Contact Two\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"2 Place Jussieu\",\"city\":\"Paris\",\"postalCode\":\"75251\",\"country\":\"France\",\"countryCode\":\"FR\"},\"phone\":\"(014) 427-4427\",\"email\":\"mockedContactTwo@email.com\",\"description\":\"Mocked Contact Two Desc\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Updates Salesforce Contacts",
+                "description": "Updates Salesforce contacts.",
+                "operationId": "PatchContacts",
+                "requestBody": {
+                    "description": "List of Contact objects to update",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/contact"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdOne\",\"accountId\":\"mockedAccountIdOne\",\"lastName\":\"Contact One\",\"firstName\":\"Mocked\",\"salutation\":\"Mr.\",\"name\":\"Mocked Contact One\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\",\"email\":\"mockedContactOne@email.com\",\"description\":\"Mocked Contact One Desc\"},{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"lastName\":\"Contact Two\",\"firstName\":\"Mocked\",\"salutation\":\"Ms.\",\"name\":\"Mocked Contact Two\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"2 Place Jussieu\",\"city\":\"Paris\",\"postalCode\":\"75251\",\"country\":\"France\",\"countryCode\":\"FR\"},\"phone\":\"(014) 427-4427\",\"email\":\"mockedContactTwo@email.com\",\"description\":\"Mocked Contact Two Desc\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contacts/id/{contactId}": {
+            "get": {
+                "summary": "Retrieve a Salesforce Contact by Id",
+                "description": "Retrieves a Salesforce contact by id with basic details.",
+                "operationId": "GetContactById",
+                "parameters": [
+                    {
+                        "name": "contactId",
+                        "in": "path",
+                        "description": "Salesforce Contact Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response with a Salesforce Contact",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/contact"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdOne\",\"accountId\":\"mockedAccountIdOne\",\"lastName\":\"Contact One\",\"firstName\":\"Mocked\",\"salutation\":\"Mr.\",\"name\":\"Mocked Contact One\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\",\"email\":\"mockedContactOne@email.com\",\"description\":\"Mocked Contact One Desc\"}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contacts/filter/{where}": {
+            "get": {
+                "summary": "Retrieve a Salesforce Contacts by Filter",
+                "description": "Retrieves Salesforce contacts by filter with basic details.",
+                "operationId": "GetContactsByFilter",
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "path",
+                        "description": "Where Condition Filters",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "isAnd",
+                        "in": "query",
+                        "description": "Type of Condition Check AND/OR",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response with list of Salesforce Contacts",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/contact"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdOne\",\"accountId\":\"mockedAccountIdOne\",\"lastName\":\"Contact One\",\"firstName\":\"Mocked\",\"salutation\":\"Mr.\",\"name\":\"Mocked Contact One\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\",\"email\":\"mockedContactOne@email.com\",\"description\":\"Mocked Contact One Desc\"},{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"lastName\":\"Contact Two\",\"firstName\":\"Mocked\",\"salutation\":\"Ms.\",\"name\":\"Mocked Contact Two\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"2 Place Jussieu\",\"city\":\"Paris\",\"postalCode\":\"75251\",\"country\":\"France\",\"countryCode\":\"FR\"},\"phone\":\"(014) 427-4427\",\"email\":\"mockedContactTwo@email.com\",\"description\":\"Mocked Contact Two Desc\"}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contacts/external/{externalField}": {
+            "put": {
+                "summary": "Upsert Salesforce Contacts",
+                "description": "Upsert Salesforce contacts.",
+                "operationId": "PutContacts",
+                "parameters": [
+                    {
+                        "name": "externalField",
+                        "in": "path",
+                        "description": "Salesforce External field used for upsert.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of Contact objects to upsert",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/contact"
+                                }
+                            },
+                            "examples": {
+                                "default": {
+                                    "value": "[{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdOne\",\"accountId\":\"mockedAccountIdOne\",\"lastName\":\"Contact One\",\"firstName\":\"Mocked\",\"salutation\":\"Mr.\",\"name\":\"Mocked Contact One\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"525 S. Lexington Ave\",\"city\":\"Burlington\",\"state\":\"NC\",\"postalCode\":\"27215\",\"country\":\"USA\",\"stateCode\":\"NC\",\"countryCode\":\"US\"},\"phone\":\"(336) 222-7000\",\"email\":\"mockedContactOne@email.com\",\"description\":\"Mocked Contact One Desc\"},{\"attributes\":{\"type\":\"Contact\"},\"id\":\"mockedContactIdTwo\",\"accountId\":\"mockedAccountIdTwo\",\"lastName\":\"Contact Two\",\"firstName\":\"Mocked\",\"salutation\":\"Ms.\",\"name\":\"Mocked Contact Two\",\"mailingAddress\":{\"attributes\":{\"type\":\"Address\"},\"street\":\"2 Place Jussieu\",\"city\":\"Paris\",\"postalCode\":\"75251\",\"country\":\"France\",\"countryCode\":\"FR\"},\"phone\":\"(014) 427-4427\",\"email\":\"mockedContactTwo@email.com\",\"description\":\"Mocked Contact Two Desc\"}]"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with Operation Responses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/operationResponse"
+                                    }
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": "[{\"id\":\"mockedSObjectId\",\"success\":true}]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input or request format.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/opportunities": {
             "get": {
                 "summary": "Retrieve a list of Salesforce Opportunities",
@@ -1112,6 +1486,239 @@
                     },
                     "url": {
                         "type": "string"
+                    }
+                }
+            },
+            "contact": {
+                "type": "object",
+                "properties": {
+                    "attributes": {
+                        "$ref": "#/components/schemas/attributes"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "isDeleted": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "accountId": {
+                        "type": "object"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "salutation": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "otherStreet": {
+                        "type": "string"
+                    },
+                    "otherCity": {
+                        "type": "string"
+                    },
+                    "otherState": {
+                        "type": "string"
+                    },
+                    "otherPostalCode": {
+                        "type": "string"
+                    },
+                    "otherCountry": {
+                        "type": "string"
+                    },
+                    "otherStateCode": {
+                        "type": "string"
+                    },
+                    "otherCountryCode": {
+                        "type": "string"
+                    },
+                    "otherLatitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "otherLongitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "otherGeocodeAccuracy": {
+                        "type": "string"
+                    },
+                    "otherAddress": {
+                        "$ref": "#/components/schemas/address"
+                    },
+                    "mailingStreet": {
+                        "type": "string"
+                    },
+                    "mailingCity": {
+                        "type": "string"
+                    },
+                    "mailingState": {
+                        "type": "string"
+                    },
+                    "mailingPostalCode": {
+                        "type": "string"
+                    },
+                    "mailingCountry": {
+                        "type": "string"
+                    },
+                    "mailingStateCode": {
+                        "type": "string"
+                    },
+                    "mailingCountryCode": {
+                        "type": "string"
+                    },
+                    "mailingLatitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "mailingLongitude": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "mailingGeocodeAccuracy": {
+                        "type": "string"
+                    },
+                    "mailingAddress": {
+                        "$ref": "#/components/schemas/address"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "fax": {
+                        "type": "string"
+                    },
+                    "mobilePhone": {
+                        "type": "string"
+                    },
+                    "homePhone": {
+                        "type": "string"
+                    },
+                    "otherPhone": {
+                        "type": "string"
+                    },
+                    "assistantPhone": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "department": {
+                        "type": "string"
+                    },
+                    "assistantName": {
+                        "type": "string"
+                    },
+                    "leadSource": {
+                        "type": "string"
+                    },
+                    "birthdate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "ownerId": {
+                        "type": "object"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createdById": {
+                        "type": "object"
+                    },
+                    "lastModifiedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastModifiedById": {
+                        "type": "object"
+                    },
+                    "systemModstamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastActivityDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastCURequestDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastCUUpdateDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastViewedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "lastReferencedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "emailBouncedReason": {
+                        "type": "string"
+                    },
+                    "emailBouncedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "isEmailBounced": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "photoUrl": {
+                        "type": "string"
+                    },
+                    "jigsaw": {
+                        "type": "string"
+                    },
+                    "jigsawContactId": {
+                        "type": "string"
+                    },
+                    "cleanStatus": {
+                        "type": "string"
+                    },
+                    "individualId": {
+                        "type": "object"
+                    },
+                    "level__c": {
+                        "type": "string"
+                    },
+                    "languages__c": {
+                        "type": "string"
+                    },
+                    "masterRecordId": {
+                        "$ref": "#/components/schemas/contact"
+                    },
+                    "reportsToId": {
+                        "$ref": "#/components/schemas/contact"
                     }
                 }
             },

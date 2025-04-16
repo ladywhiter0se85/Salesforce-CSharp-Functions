@@ -153,6 +153,152 @@
 			]
 		},
 		{
+			"name": "Contacts",
+			"item": [
+				{
+					"name": "GET -  Contacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/contacts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -  Contacts By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/contacts/id/003gK000000SYQ9QAO",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts",
+								"id",
+								"003gK000000SYQ9QAO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -  Contacts By Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/contacts/filter/MailingState:KS,CA?isAnd=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts",
+								"filter",
+								"MailingState:KS,CA"
+							],
+							"query": [
+								{
+									"key": "isAnd",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-  Contacts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"attributes\": {\r\n            \"type\": \"Contact\"\r\n        },\r\n        \"firstName\": \"CH Test\",\r\n        \"lastName\": \"Contact Five\",\r\n        \"phone\": \"588-454-5857\",\r\n        \"email\": \"chContactFive@email.com\",\r\n        \"description\": \"CH Test Contact 5 Creation\",\r\n        \"mailingStreet\": \"785 Main St\",\r\n        \"mailingCity\": \"Penticton\",\r\n        \"mailingPostalCode\": \"V2A 5E3\",\r\n        \"mailingCountry\": \"Canada\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contacts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH -  Contacts",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n      \"attributes\": {\r\n        \"type\": \"Contact\"\r\n      },\r\n      \"id\": \"003gK000001HOzpQAG\",\r\n      \"description\": \"CH Test Contact 5 Update\"\r\n    }\r\n  ]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contacts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT -  Contacts",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"attributes\": {\r\n      \"type\": \"Contact\"\r\n    },\r\n    \"id\": \"003gK000001HOzpQAG\",\r\n    \"description\": \"CH Test Contact 5 Upsert\"\r\n  },\r\n  {\r\n    \"attributes\": {\r\n      \"type\": \"Contact\"\r\n    },\r\n    \"firstName\": \"CH Test\",\r\n    \"lastName\": \"Contact Six\",\r\n    \"phone\": \"588-453-2214\",\r\n    \"email\": \"chContactSix@email.com\",\r\n    \"description\": \"CH Test Contact 6 Creation\",\r\n    \"mailingStreet\": \"1000 K. L. O. Rd\",\r\n    \"mailingCity\": \"Kelowna\",\r\n    \"mailingPostalCode\": \"V1Y 4X8\",\r\n    \"mailingCountry\": \"Canada\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contacts/external/Id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts",
+								"external",
+								"Id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Opportunities",
 			"item": [
 				{

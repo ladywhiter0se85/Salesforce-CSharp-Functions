@@ -95,7 +95,7 @@ namespace Tests.Functions.Live
         public async Task PostAccountsTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/postAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/postAccountsRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var accountsResponse = await _accountFunctions.PostAccounts(request);
@@ -125,7 +125,7 @@ namespace Tests.Functions.Live
         public async Task PatchAccountsTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/patchAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/patchAccountsRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var accountsResponse = await _accountFunctions.PatchAccounts(request);
@@ -172,7 +172,7 @@ namespace Tests.Functions.Live
         {
             Initialize();
             var externalField = "Id";
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/upsertAccountsRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var accountsResponse = await _accountFunctions.PutAccounts(request, externalField);
@@ -187,7 +187,7 @@ namespace Tests.Functions.Live
         public async Task PutAccountsNoExternalFieldTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/upsertAccountsRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var accountsResponse = await _accountFunctions.PutAccounts(request, "");

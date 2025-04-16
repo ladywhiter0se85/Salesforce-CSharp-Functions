@@ -7,7 +7,7 @@ namespace Tests.Functions.Mocked
         [Fact]
         public async Task GetOpportunitiesTest()
         {
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunitiesResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunitiesResponse.json");
             var opportunities = JsonConvert.DeserializeObject<List<Opportunity>>(json);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, opportunities);
 
@@ -27,7 +27,7 @@ namespace Tests.Functions.Mocked
         public async Task GetOpportunityByIdTest()
         {
             var opportunityId = "mockedOpportunityOneId";
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunitiesResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunitiesResponse.json");
             var opportunities = JsonConvert.DeserializeObject<List<Opportunity>>(json);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, opportunities![0]);
 
@@ -66,7 +66,7 @@ namespace Tests.Functions.Mocked
         {
             var filter = "Id:mockedOpportunityOneId";
             var isAnd = true;
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunitiesResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunitiesResponse.json");
             var opportunities = JsonConvert.DeserializeObject<List<Opportunity>>(json);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, opportunities);
 
@@ -123,7 +123,7 @@ namespace Tests.Functions.Mocked
         [Fact]
         public async Task PostOpportunitiesTest()
         {
-            var body = ResponseUtility.ReadFile("Resources/Live/postOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/postOpportunitiesRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, operationResp);
@@ -161,7 +161,7 @@ namespace Tests.Functions.Mocked
         [Fact]
         public async Task PatchOpportunitiesTest()
         {
-            var body = ResponseUtility.ReadFile("Resources/Live/patchOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/patchOpportunitiesRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, operationResp);
@@ -219,7 +219,7 @@ namespace Tests.Functions.Mocked
         public async Task PutOpportunitiesTest()
         {
             var externalField = "Id";
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/upsertOpportunitiesRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, operationResp);
@@ -240,7 +240,7 @@ namespace Tests.Functions.Mocked
         public async Task PutOpportunitiesNoExternalFieldTest()
         {
             var msg = "The parameter 'externalField' is required.";
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/upsertOpportunitiesRequest.json");
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.BadRequest, msg);
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);

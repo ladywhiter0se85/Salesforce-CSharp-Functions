@@ -1,0 +1,23 @@
+[
+  {
+    "attributes": {
+      "type": "Contact"
+    },
+    "id": "003gK000001GEw5QAG",
+    "description": "CH Test Contact 1 Upsert"
+  },
+  {
+    "attributes": {
+      "type": "Contact"
+    },
+    "firstName": "CH Test",
+    "lastName": "Contact Four",
+    "phone": "588-453-2211",
+    "email": "chContactFour@email.com",
+    "description": "CH Test Contact 4 Creation",
+    "mailingStreet": "1000 K. L. O. Rd",
+    "mailingCity": "Kelowna",
+    "mailingPostalCode": "V1Y 4X8",
+    "mailingCountry": "Canada"
+  }
+]

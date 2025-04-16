@@ -51,7 +51,7 @@ namespace Tests.Services.Live
         public async Task PostAccountsAsyncTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/postAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/postAccountsRequest.json");
             var resp = await _accountApiService.PostAccountsAsync(body);
             Assert.NotNull(resp);
         }
@@ -60,7 +60,7 @@ namespace Tests.Services.Live
         public async Task PatchAccountsAsyncTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/patchAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/patchAccountsRequest.json");
             var resp = await _accountApiService.PatchAccountsAsync(body);
             Assert.NotNull(resp);
         }
@@ -69,7 +69,7 @@ namespace Tests.Services.Live
         public async Task UpsertAccountsAsyncTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/upsertAccountsRequest.json");
             var externalField = "Id";
             var resp = await _accountApiService.UpsertAccountsAsync(body, externalField);
             Assert.NotNull(resp);

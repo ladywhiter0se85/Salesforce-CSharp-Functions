@@ -58,6 +58,24 @@ The goal of the app is to offer a lightweight, extendable backend service to int
       - [Parameters](#parameters-5)
       - [Input Schema](#input-schema-5)
       - [Output Schema](#output-schema-11)
+    - [GET - `/contacts`](#get---contacts)
+      - [Output Schema](#output-schema-12)
+    - [GET - `/contacts/id/{contactId}`](#get---contactsidcontactid)
+      - [Parameters](#parameters-6)
+      - [Output Schema](#output-schema-13)
+    - [GET - `/contacts/filter/{where}`](#get---contactsfilterwhere)
+      - [Parameters](#parameters-7)
+      - [Output Schema](#output-schema-14)
+    - [POST - `/contacts`](#post---contacts)
+      - [Input Schema](#input-schema-6)
+      - [Output Schema](#output-schema-15)
+    - [PATCH - `/contacts`](#patch---contacts)
+      - [Input Schema](#input-schema-7)
+      - [Output Schema](#output-schema-16)
+    - [PUT - `/contacts/external`](#put---contactsexternal)
+      - [Parameters](#parameters-8)
+      - [Input Schema](#input-schema-8)
+      - [Output Schema](#output-schema-17)
 
 ## Current Functions
 
@@ -75,6 +93,12 @@ This Function App exposes the following endpoints:
 10. **POST** `/opportunities` – Returns a list of OperationResponse
 11. **PATCH** `/opportunities` – Returns a list of OperationResponse
 12. **PUT** `/opportunities/external` – Returns a list of OperationResponse
+13. **GET** `/contacts` – Returns a list of Salesforce Contact objects
+14. **GET** `/contacts/id/{contactId}` – Returns a Salesforce Contact object  
+15. **GET** `/contacts/filter/{where}` – Returns a list of Salesforce Contact objects  
+16. **POST** `/contacts` – Returns a list of OperationResponse
+17. **PATCH** `/contacts` – Returns a list of OperationResponse
+18. **PUT** `/contacts/external` – Returns a list of OperationResponse
 
 ---
 
@@ -543,6 +567,269 @@ Returns a list of `Operation Response` objects.
     },
     {
         "id": "mockedOpportunityIdTwo",
+        "success": true,
+        "created": true
+    }
+]
+```
+
+### GET - `/contacts`
+
+Returns a list of Salesforce `Contact` objects.
+
+#### Output Schema
+
+```json
+[
+    {
+        "attributes": {
+            "type": "Account",
+            "url": "mockedURLAccountOne"
+        },
+        "id": "mockedAccountOneId",
+        "name": "Mocked Account One",
+        "type": "Customer - Direct",
+        "billingAddress": {
+            "street": "312 Constitution Place\nAustin, TX 78767\nUSA",
+            "city": "Austin",
+            "state": "TX",
+            "country": "United States",
+            "stateCode": "TX",
+            "countryCode": "US"
+        },
+        "phone": "(512) 757-6000",
+        "description": "Description for Mocked Account One.",
+        "active__c": "Yes"
+    },
+    {
+        "attributes": {
+            "type": "Account",
+            "url": "mockedURLAccountTwo"
+        },
+        "id": "mockedAccountTwoId",
+        "name": "Mocked Account Two",
+        "type": "Customer - Direct",
+        "billingAddress": {
+            "street": "525 S. Lexington Ave",
+            "city": "Burlington",
+            "state": "NC",
+            "postalCode": "27215",
+            "country": "USA",
+            "stateCode": "NC",
+            "countryCode": "US"
+        },
+        "phone": "(336) 222-7000"
+    }
+]
+```
+
+### GET - `/contacts/id/{contactId}`
+
+Returns a Salesforce `Contact` object.
+
+#### Parameters
+
+| Parameter Name | Type   | Required | In    | Example            |
+|----------------|--------|----------|-------|--------------------|
+| contactId      | string | true     | path  | mockedContactOneId |
+
+#### Output Schema
+
+```json
+[
+    {
+        "attributes": {
+            "type": "Account",
+            "url": "mockedURLAccountOne"
+        },
+        "id": "mockedAccountOneId",
+        "name": "Mocked Account One",
+        "type": "Customer - Direct",
+        "billingAddress": {
+            "street": "312 Constitution Place\nAustin, TX 78767\nUSA",
+            "city": "Austin",
+            "state": "TX",
+            "country": "United States",
+            "stateCode": "TX",
+            "countryCode": "US"
+        },
+        "phone": "(512) 757-6000",
+        "description": "Description for Mocked Account One.",
+        "active__c": "Yes"
+    }
+]
+```
+
+### GET - `/contacts/filter/{where}`
+
+Returns a list of Salesforce `Contact` objects.
+
+#### Parameters
+
+| Parameter Name | Type   | Required | In    | Example         |
+|----------------|--------|----------|-------|-----------------|
+| where          | string | true     | path  | MailingState:CA |
+| isAnd          | bool   | true     | query | true            |
+
+#### Output Schema
+
+```json
+[
+    {
+        "attributes": {
+            "type": "Account",
+            "url": "mockedURLAccountOne"
+        },
+        "id": "mockedAccountOneId",
+        "name": "Mocked Account One",
+        "type": "Customer - Direct",
+        "billingAddress": {
+            "street": "312 Constitution Place\nAustin, TX 78767\nUSA",
+            "city": "Austin",
+            "state": "TX",
+            "country": "United States",
+            "stateCode": "TX",
+            "countryCode": "US"
+        },
+        "phone": "(512) 757-6000",
+        "description": "Description for Mocked Account One.",
+        "active__c": "Yes"
+    },
+    {
+        "attributes": {
+            "type": "Account",
+            "url": "mockedURLAccountTwo"
+        },
+        "id": "mockedAccountTwoId",
+        "name": "Mocked Account Two",
+        "type": "Customer - Direct",
+        "billingAddress": {
+            "street": "525 S. Lexington Ave",
+            "city": "Burlington",
+            "state": "NC",
+            "postalCode": "27215",
+            "country": "USA",
+            "stateCode": "NC",
+            "countryCode": "US"
+        },
+        "phone": "(336) 222-7000"
+    }
+]
+```
+
+### POST - `/contacts`
+
+Returns a list of `Operation Response` objects.
+
+#### Input Schema
+
+```json
+[
+    {
+        "attributes": {
+            "type": "Contact"
+        },
+        "firstName": "Mocked",
+        "lastName": "Contact One",
+        "phone": "588-454-5857",
+        "email": "mockedContactOne@email.com",
+        "description": "Mocked Contact One Creation",
+        "mailingStreet": "800 Kalamalka Lake Rd",
+        "mailingCity": "Vernon",
+        "mailingPostalCode": "V1T 6V2",
+        "mailingCountry": "Canada"
+    }
+]
+```
+
+#### Output Schema
+
+```json
+[
+    {
+        "id": "mockedContactId",
+        "success": true
+    }
+]
+```
+
+### PATCH - `/contacts`
+
+Returns a list of `Operation Response` objects.
+
+#### Input Schema
+
+```json
+[
+    {
+      "attributes": {
+        "type": "Contact"
+      },
+      "id": "mockedContactId",
+      "description": "Mocked Contact One Update"
+    }
+]
+```
+
+#### Output Schema
+
+```json
+[
+    {
+        "id": "mockedContactId",
+        "success": true
+    }
+]
+```
+
+### PUT - `/contacts/external`
+
+Returns a list of `Operation Response` objects.
+
+#### Parameters
+
+| Parameter Name | Type   | Required | In    | Example |
+|----------------|--------|----------|-------|---------|
+| externalField  | string | true     | path  | Id      |
+
+#### Input Schema
+
+```json
+[
+  {
+    "attributes": {
+      "type": "Contact"
+    },
+    "id": "mockedContactId",
+    "description": "Mocked Contact One Upsert"
+  },
+  {
+    "attributes": {
+      "type": "Contact"
+    },
+    "firstName": "Mocked",
+    "lastName": "Contact Two",
+    "phone": "588-453-2211",
+    "email": "mockedContactTwo@email.com",
+    "description": "Mocked Contact Two Creation",
+    "mailingStreet": "1000 K. L. O. Rd",
+    "mailingCity": "Kelowna",
+    "mailingPostalCode": "V1Y 4X8",
+    "mailingCountry": "Canada"
+  }
+]
+```
+
+#### Output Schema
+
+```json
+[
+    {
+        "id": "mockedContactId",
+        "success": true
+    },
+    {
+        "id": "mockedContactIdTwo",
         "success": true,
         "created": true
     }

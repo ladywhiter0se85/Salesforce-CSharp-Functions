@@ -7,7 +7,7 @@ namespace Tests.Functions.Mocked
         [Fact]
         public async Task GetAccountsTest()
         {
-            var json = ResponseUtility.ReadFile("Resources/Mocked/accountsResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Account/accountsResponse.json");
             var accounts = JsonConvert.DeserializeObject<List<Account>>(json);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, accounts);
 
@@ -27,7 +27,7 @@ namespace Tests.Functions.Mocked
         public async Task GetAccountByIdTest()
         {
             var accountId = "mockedAccountOneId";
-            var json = ResponseUtility.ReadFile("Resources/Mocked/accountsResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Account/accountsResponse.json");
             var accounts = JsonConvert.DeserializeObject<List<Account>>(json);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, accounts![0]);
 
@@ -66,7 +66,7 @@ namespace Tests.Functions.Mocked
         {
             var filter = "Id:mockedAccountOneId";
             var isAnd = true;
-            var json = ResponseUtility.ReadFile("Resources/Mocked/accountsResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Account/accountsResponse.json");
             var accounts = JsonConvert.DeserializeObject<List<Account>>(json);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, accounts);
 
@@ -123,7 +123,7 @@ namespace Tests.Functions.Mocked
         [Fact]
         public async Task PostAccountsTest()
         {
-            var body = ResponseUtility.ReadFile("Resources/Live/postAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/postAccountsRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, operationResp);
@@ -161,7 +161,7 @@ namespace Tests.Functions.Mocked
         [Fact]
         public async Task PatchAccountsTest()
         {
-            var body = ResponseUtility.ReadFile("Resources/Live/patchAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/patchAccountsRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, operationResp);
@@ -219,7 +219,7 @@ namespace Tests.Functions.Mocked
         public async Task PutAccountsTest()
         {
             var externalField = "Id";
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/upsertAccountsRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.OK, operationResp);
@@ -240,7 +240,7 @@ namespace Tests.Functions.Mocked
         public async Task PutAccountsNoExternalFieldTest()
         {
             var msg = "The parameter 'externalField' is required.";
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertAccountsRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Account/upsertAccountsRequest.json");
             var response = FunctionsUtility.MockedHttpResponseData(HttpStatusCode.BadRequest, msg);
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
