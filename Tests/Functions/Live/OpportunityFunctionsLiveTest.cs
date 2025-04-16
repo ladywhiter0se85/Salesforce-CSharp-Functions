@@ -95,7 +95,7 @@ namespace Tests.Functions.Live
         public async Task PostOpportunitiesTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/postOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/postOpportunitiesRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var opportunitiesResponse = await _opportunityFunctions.PostOpportunities(request);
@@ -125,7 +125,7 @@ namespace Tests.Functions.Live
         public async Task PatchOpportunitiesTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/patchOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/patchOpportunitiesRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var opportunitiesResponse = await _opportunityFunctions.PatchOpportunities(request);
@@ -172,7 +172,7 @@ namespace Tests.Functions.Live
         {
             Initialize();
             var externalField = "Id";
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/upsertOpportunitiesRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var opportunitiesResponse = await _opportunityFunctions.PutOpportunities(request, externalField);
@@ -187,7 +187,7 @@ namespace Tests.Functions.Live
         public async Task PutOpportunitiesNoExternalFieldTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/upsertOpportunitiesRequest.json");
 
             var request = FunctionsUtility.MockedHttpRequestData(null, null, body);
             var opportunitiesResponse = await _opportunityFunctions.PutOpportunities(request, "");

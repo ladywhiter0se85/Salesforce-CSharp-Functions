@@ -7,7 +7,7 @@ namespace Tests.Services.Mocked
         [Fact]
         public async Task GetAllOpportunitiesAsyncTest()
         {
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunitiesResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunitiesResponse.json");
             var opportunitys = JsonConvert.DeserializeObject<List<Opportunity>>(json);
 
             _opportunityApiService.Setup(x => x.GetAllOpportunitiesAsync()).ReturnsAsync(new ApiResponse<List<Opportunity>>(opportunitys));
@@ -21,7 +21,7 @@ namespace Tests.Services.Mocked
         public async Task GetOpportunityByIdAsyncTest()
         {
             var opportunityId = "mockedOpportunityTwoId";
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunityResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunityResponse.json");
             var opportunity = JsonConvert.DeserializeObject<Opportunity>(json)!;
             Assert.NotNull(opportunity);
 
@@ -37,7 +37,7 @@ namespace Tests.Services.Mocked
         public async Task GetOpportunitiesByFilterAsyncOneToOneAndTest()
         {
             var filter = "StageName:Qualification&Type:Existing Customer - Upgrade";
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunitiesResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunitiesResponse.json");
             var opportunitys = JsonConvert.DeserializeObject<List<Opportunity>>(json);
 
             _opportunityApiService.Setup(x => x.GetOpportunitiesByFilterAsync(filter, true)).ReturnsAsync(new ApiResponse<List<Opportunity>>(opportunitys));
@@ -51,7 +51,7 @@ namespace Tests.Services.Mocked
         public async Task GetOpportunitiesByFilterAsyncOneToManyTest()
         {
             var filter = "StageName:Qualification,Negotiation/Review";
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunitiesResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunitiesResponse.json");
             var opportunitys = JsonConvert.DeserializeObject<List<Opportunity>>(json);
 
             _opportunityApiService.Setup(x => x.GetOpportunitiesByFilterAsync(filter, true)).ReturnsAsync(new ApiResponse<List<Opportunity>>(opportunitys));
@@ -65,7 +65,7 @@ namespace Tests.Services.Mocked
         public async Task GetOpportunitiesByFilterAsyncManyToOneOrTest()
         {
             var filter = "Name:Mocked Opportunity One,Mocked Opportunity Two&Id:mockedOpportunityTwoId";
-            var json = ResponseUtility.ReadFile("Resources/Mocked/opportunitiesResponse.json");
+            var json = ResponseUtility.ReadFile("Resources/Mocked/Opportunity/opportunitiesResponse.json");
             var opportunitys = JsonConvert.DeserializeObject<List<Opportunity>>(json);
 
             _opportunityApiService.Setup(x => x.GetOpportunitiesByFilterAsync(filter, false)).ReturnsAsync(new ApiResponse<List<Opportunity>>(opportunitys));
@@ -78,7 +78,7 @@ namespace Tests.Services.Mocked
         [Fact]
         public async Task PostOpportunitiesAsyncTest()
         {
-            var body = ResponseUtility.ReadFile("Resources/Live/postOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/postOpportunitiesRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
 
@@ -92,7 +92,7 @@ namespace Tests.Services.Mocked
         [Fact]
         public async Task PatchOpportunitiesAsyncTest()
         {
-            var body = ResponseUtility.ReadFile("Resources/Live/patchOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/patchOpportunitiesRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
 
@@ -107,7 +107,7 @@ namespace Tests.Services.Mocked
         public async Task UpsertOpportunitiesAsyncTest()
         {
             var externalField = "Id";
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/upsertOpportunitiesRequest.json");
             var opJson = ResponseUtility.ReadFile("Resources/Mocked/operationResponse.json");
             var operationResp = JsonConvert.DeserializeObject<List<OperationResponse>>(opJson);
             operationResp!.Add(new OperationResponse() { Id = "mockedOpportunityIdTwo" });

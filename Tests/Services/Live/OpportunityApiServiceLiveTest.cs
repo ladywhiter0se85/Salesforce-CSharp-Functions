@@ -51,7 +51,7 @@ namespace Tests.Services.Live
         public async Task PostOpportunitiesAsyncTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/postOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/postOpportunitiesRequest.json");
             var resp = await _opportunityApiService.PostOpportunitiesAsync(body);
             Assert.NotNull(resp);
         }
@@ -60,7 +60,7 @@ namespace Tests.Services.Live
         public async Task PatchOpportunitiesAsyncTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/patchOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/patchOpportunitiesRequest.json");
             var resp = await _opportunityApiService.PatchOpportunitiesAsync(body);
             Assert.NotNull(resp);
         }
@@ -69,7 +69,7 @@ namespace Tests.Services.Live
         public async Task UpsertOpportunitiesAsyncTest()
         {
             Initialize();
-            var body = ResponseUtility.ReadFile("Resources/Live/upsertOpportunitiesRequest.json");
+            var body = ResponseUtility.ReadFile("Resources/Live/Opportunity/upsertOpportunitiesRequest.json");
             var externalField = "Id";
             var resp = await _opportunityApiService.UpsertOpportunitiesAsync(body, externalField);
             Assert.NotNull(resp);

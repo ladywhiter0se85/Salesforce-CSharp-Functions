@@ -1,0 +1,16 @@
+[
+    {
+        "attributes": {
+            "type": "Contact"
+        },
+        "firstName": "CH Test",
+        "lastName": "Contact Three",
+        "phone": "588-454-5857",
+        "email": "chContactThree@email.com",
+        "description": "CH Test Contact 3 Creation",
+        "mailingStreet": "800 Kalamalka Lake Rd",
+        "mailingCity": "Vernon",
+        "mailingPostalCode": "V1T 6V2",
+        "mailingCountry": "Canada"
+    }
+]
