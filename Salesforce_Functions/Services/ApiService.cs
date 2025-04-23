@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using System.Text;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -20,7 +21,7 @@ namespace Salesforce_Functions.Services
         {
             _apiProperties = ConfigurationUtility.GetApiProperties();
             _logger = logger;
-            _requestURL = $"{_apiProperties.DomainUrl}/services/data/v{_apiProperties.Version}/";
+            _requestURL = $"{_apiProperties.DomainUrl}/services/data/v{_apiProperties.Version}";
         }
 
         public async Task<string> GetAccessTokenAsync()
@@ -50,16 +51,13 @@ namespace Salesforce_Functions.Services
             }
         }
 
-        public async Task<string> GetRequestAsync(string accessToken, string sObjectName, string query)
+        public async Task<string> GetQueryAsync(string accessToken, string sObjectName, string query)
         {
             _logger.LogInformation($"Requesting Salesforce Object: {sObjectName}.");
+
             string url = _requestURL + $"/query/?q={query}";
+            var responseContent = await GetRequestAsync(accessToken, url);
 
-            var httpClient = BuildHttpClient(accessToken);
-
-            // Send the GET request
-            var response = await httpClient.GetAsync(url);
-            var responseContent = await ValidateResponse(response);
             _logger.LogInformation($"Salesforce Object: {sObjectName} request complete.");
             return responseContent;
         }
@@ -67,28 +65,18 @@ namespace Salesforce_Functions.Services
         public async Task<string> GetDescribeAsync(string accessToken, string sObjectName)
         {
             _logger.LogInformation($"Requesting Salesforce Describe for: {sObjectName}.");
+
             string url = _requestURL + $"/sobjects/{sObjectName}/describe";
+            var responseContent = await GetRequestAsync(accessToken, url);
 
-            var httpClient = BuildHttpClient(accessToken);
-
-            // Send the GET Describe request
-            var response = await httpClient.GetAsync(url);
-            var responseContent = await ValidateResponse(response);
             _logger.LogInformation($"Salesforce Describe for: {sObjectName} request complete.");
             return responseContent;
         }
 
-        public async Task<string> PostRequesAsynct(string accessToken, string sObjectName, string data)
+        public async Task<string> PostRequesAsync(string accessToken, string sObjectName, string data)
         {
             _logger.LogInformation($"Creating Salesforce Objects: {sObjectName}.");
-            string url = _requestURL + $"/composite/sobjects";
-
-            var httpClient = BuildHttpClient(accessToken);
-            var content = new StringContent(WrapDataForComposite(data), Encoding.UTF8, "application/json");
-
-            // Send the POST request
-            var response = await httpClient.PostAsync(url, content);
-            var responseContent = await ValidateResponse(response);
+            var responseContent = await GetOperationQuestionAsync(accessToken, data, HttpMethod.Post);
             _logger.LogInformation($"Salesforce Objects: {sObjectName} creation complete.");
             return responseContent;
         }
@@ -96,15 +84,7 @@ namespace Salesforce_Functions.Services
         public async Task<string> PatchRequestAsync(string accessToken, string sObjectName, string data)
         {
             _logger.LogInformation($"Updating Salesforce Objects: {sObjectName}.");
-            // Request URL
-            string url = _requestURL + $"/composite/sobjects";
-
-            var httpClient = BuildHttpClient(accessToken);
-            var content = new StringContent(WrapDataForComposite(data), Encoding.UTF8, "application/json");
-
-            // Send the PATCH request
-            var response = await httpClient.PatchAsync(url, content);
-            var responseContent = await ValidateResponse(response);
+            var responseContent = await GetOperationQuestionAsync(accessToken, data, HttpMethod.Patch);
             _logger.LogInformation($"Salesforce Objects: {sObjectName} update complete.");
             return responseContent;
         }
@@ -112,17 +92,33 @@ namespace Salesforce_Functions.Services
         public async Task<string> UpsertRequestAsync(string accessToken, string sObjectName, string data, string externalField)
         {
             _logger.LogInformation($"Upserting Salesforce Objects: {sObjectName}.");
-            // Request URL
-            string url = _requestURL + $"/composite/sobjects/{sObjectName}/{externalField}";
+            var responseContent = await GetOperationQuestionAsync(accessToken, data, HttpMethod.Patch, sObjectName, externalField);
+            _logger.LogInformation($"Salesforce Objects: {sObjectName} upsert complete.");
+            return responseContent;
+        }
 
+        private async Task<string> GetRequestAsync(string accessToken, string url)
+        {
+            var httpClient = BuildHttpClient(accessToken);
+
+            // Send the GET request
+            var response = await httpClient.GetAsync(url);
+            return await ValidateResponse(response);
+        }
+
+        private async Task<string> GetOperationQuestionAsync(string accessToken, string data, HttpMethod method, string? sObjectName = null, string? externalField = null)
+        {
+            var url = _requestURL + "/composite/sobjects";
+            if (externalField != null && !externalField.IsEmpty())
+            {
+                url += "/" + sObjectName + "/" + externalField;
+            }
             var httpClient = BuildHttpClient(accessToken);
             var content = new StringContent(WrapDataForComposite(data), Encoding.UTF8, "application/json");
 
-            // Send the UPSERT request
-            var response = await httpClient.PatchAsync(url, content);
-            var responseContent = await ValidateResponse(response);
-            _logger.LogInformation($"Salesforce Objects: {sObjectName} upsert complete.");
-            return responseContent;
+            // Send the Operation request
+            var response = method == HttpMethod.Post ? await httpClient.PostAsync(url, content) : await httpClient.PatchAsync(url, content);
+            return await ValidateResponse(response);
         }
 
         private HttpClient BuildHttpClient(string accessToken)

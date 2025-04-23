@@ -17,14 +17,14 @@ public class ApiServiceMockedTest(ApiServiceMockedFixture apiServiceFixture) : I
     }
 
     [Fact]
-    public async Task GetAccountRequestAsyncTest()
+    public async Task GetAccountQueryAsyncTest()
     {
         var query = "SELECT Id, Name FROM Account LIMIT 1";
         var queryResponse = "{\"totalSize\":1,\"done\":true,\"records\":[{\"attributes\":{\"type\":\"Account\",\"url\":\"/services/data/v58.0/sobjects/Account/001gK000002OgxpQAC\"},\"Id\":\"001gK000002OgxpQAC\",\"Name\":\"Edge Communications\"}]}";
 
-        _apiService.Setup(x => x.GetRequestAsync(_accessToken, "Account", query)).ReturnsAsync(queryResponse);
+        _apiService.Setup(x => x.GetQueryAsync(_accessToken, "Account", query)).ReturnsAsync(queryResponse);
 
-        var resp = await _apiService.Object.GetRequestAsync(_accessToken, "Account", query);
+        var resp = await _apiService.Object.GetQueryAsync(_accessToken, "Account", query);
         Assert.NotNull(resp);
         Assert.Equal(queryResponse, resp);
     }
@@ -42,13 +42,13 @@ public class ApiServiceMockedTest(ApiServiceMockedFixture apiServiceFixture) : I
     }
 
     [Fact]
-    public async Task PostAccountRequesAsyncTest()
+    public async Task PostAccountRequestAsyncTest()
     {
         var body = "[{\"attributes\":{\"type\":\"Account\"},\"Name\":\"CH Test Account 2\",\"Phone\":\"555-444-5855\",\"Description\":\"CH Test Account 2 Creation\"}]";
 
-        _apiService.Setup(x => x.PostRequesAsynct(_accessToken, "Account", body)).ReturnsAsync(_operationResponse);
+        _apiService.Setup(x => x.PostRequestAsync(_accessToken, "Account", body)).ReturnsAsync(_operationResponse);
 
-        var resp = await _apiService.Object.PostRequesAsynct(_accessToken, "Account", body);
+        var resp = await _apiService.Object.PostRequestAsync(_accessToken, "Account", body);
         Assert.NotNull(resp);
         Assert.Equal(_operationResponse, resp);
     }

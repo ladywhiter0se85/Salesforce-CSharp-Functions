@@ -17,7 +17,7 @@ namespace Salesforce_Functions.Utilities
             return await ProcessErrorsAsync(logger, async () =>
             {
                 var accessToken = await apiService.GetAccessTokenAsync();
-                var initialResp = await apiService.GetRequestAsync(accessToken, sObjectName, query);
+                var initialResp = await apiService.GetQueryAsync(accessToken, sObjectName, query);
 
                 var json = JObject.Parse(initialResp);
                 var records = json["records"]?.ToString();
@@ -45,7 +45,7 @@ namespace Salesforce_Functions.Utilities
 
                 string initialResp = method switch
                 {
-                    var m when m == HttpMethod.Post => await apiService.PostRequesAsynct(accessToken, sObjectName, body),
+                    var m when m == HttpMethod.Post => await apiService.PostRequesAsync(accessToken, sObjectName, body),
                     var m when m == HttpMethod.Patch => await apiService.PatchRequestAsync(accessToken, sObjectName, body),
                     var m when m == HttpMethod.Put => await apiService.UpsertRequestAsync(accessToken, sObjectName, body, externalField!),
                     _ => throw new NotSupportedException($"HTTP method {method} is not supported.")
