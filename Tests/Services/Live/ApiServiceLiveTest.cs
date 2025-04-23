@@ -16,11 +16,11 @@ public class ApiServiceLiveTest(ApiServiceLiveFixture apiServiceFixture) : IClas
     }
 
     [Fact]
-    public async Task GetAccountRequestAsyncTest()
+    public async Task GetAccountQueryAsyncTest()
     {
         await Initialize();
         var query = "SELECT Id, Name FROM Account LIMIT 1";
-        var resp = await _apiService.GetRequestAsync(_accessToken!, "Account", query);
+        var resp = await _apiService.GetQueryAsync(_accessToken!, "Account", query);
         Assert.NotNull(resp);
     }
 
@@ -33,11 +33,11 @@ public class ApiServiceLiveTest(ApiServiceLiveFixture apiServiceFixture) : IClas
     }
 
     [Fact]
-    public async Task PostAccountRequesAsyncTest()
+    public async Task PostAccountRequestAsyncTest()
     {
         await Initialize();
         var body = "[{\"attributes\":{\"type\":\"Account\"},\"Name\":\"CH Test Account 6\",\"Phone\":\"555-444-5855\",\"Description\":\"CH Test Account 6 Creation\"}]";
-        var resp = await _apiService.PostRequesAsynct(_accessToken!, "Account", body);
+        var resp = await _apiService.PostRequesAsync(_accessToken!, "Account", body);
         Assert.NotNull(resp);
     }
 
