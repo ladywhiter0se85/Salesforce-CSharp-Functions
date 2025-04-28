@@ -228,9 +228,6 @@ echo "✅ Successful fetching of $SOBJECT fields."
 # Initialize the flag to track if JsonProperty needs to be added
 NEEDS_JSON_IMPORT=false
 
-# Define C# types in an array for easier checking
-C_SHARP_TYPES=("string" "bool" "double" "int" "DateTime")
-
 # Processing fields
 for FIELD in $FIELDS; do
 	NAME=$(echo "$FIELD" | cut -d: -f1)
@@ -276,7 +273,7 @@ echo "}" >>"$SOBJECT_FILE"
 
 echo "✅ $SOBJECT class created."
 
-# Afrer SObject Processed remove from Missing References txt file if exists
+# After SObject Processed remove from Missing References txt file if exists
 remove_reference $SOBJECT
 # Then display any additional references that could be manually added and are currently set as object?
 display_missing_references
