@@ -47,10 +47,7 @@ The `generate-sobject.sh` script is located in the `Salesforce_Functions` folder
    - `name`
    - `type`
    - `referenceTo` (for lookup/relationship fields)
-6. Maps field types to C# types:
-   - Common types like `string`, `boolean`, `int`, etc.
-   - Reference fields and unknown types default to `object?`
-7. Logs any related SObjects (e.g., lookup relationships) that weren't fully generated to:
+6. Logs any related SObjects (e.g., lookup relationships) that weren't fully generated to:
 
    ```txt
    Salesforce_Functions/Resources/missing_references.txt
@@ -58,4 +55,4 @@ The `generate-sobject.sh` script is located in the `Salesforce_Functions` folder
 
    These can be manually created later for improved type safety.
 
-8. At the end of execution, the script displays any additional SObjects referenced that can optionally be created.
+7. At the end of execution, the script displays any additional SObjects referenced that can optionally be created.
