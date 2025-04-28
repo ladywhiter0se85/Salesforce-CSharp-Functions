@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
@@ -155,7 +156,7 @@ namespace Salesforce_Functions.Services
                 if (hasErrors)
                 {
                     _logger.LogError("Salesforce logical error: {Response}", responseContent);
-                    throw new ApiResponseException<string>(new ApiResponse<string>(response.StatusCode, responseContent));
+                    throw new ApiResponseException<string>(new ApiResponse<string>(HttpStatusCode.BadRequest, responseContent));
                 }
             }
 

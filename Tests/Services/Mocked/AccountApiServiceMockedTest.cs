@@ -20,7 +20,7 @@ namespace Tests.Services.Mocked
         [Fact]
         public async Task GetAccountByIdAsyncTest()
         {
-            var accountId = "mockedAccountTwoId";
+            var accountId = "mockedAccountOneId";
             var json = ResponseUtility.ReadFile("Resources/Mocked/Account/accountResponse.json");
             var account = JsonConvert.DeserializeObject<Account>(json)!;
             Assert.NotNull(account);
@@ -30,7 +30,7 @@ namespace Tests.Services.Mocked
             ApiResponse<Account> resp = await _accountApiService.Object.GetAccountByIdAsync(accountId)!;
             Assert.NotNull(resp);
             Assert.NotNull(resp.Data);
-            Assert.Equal("Mocked Account Two", resp.Data!.Name);
+            Assert.Equal("Mocked Account One", resp.Data!.Name);
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Tests.Services.Mocked
         }
 
         [Fact]
-        public async Task GetAccountsByFilterAsyncOneToManyTest()
+        public async Task GetAccountsByFilterAsyncOneToManyAndTest()
         {
             var filter = "BillingState:TX,NC";
             var json = ResponseUtility.ReadFile("Resources/Mocked/Account/accountsResponse.json");

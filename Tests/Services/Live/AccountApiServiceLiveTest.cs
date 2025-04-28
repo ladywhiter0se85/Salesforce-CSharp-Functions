@@ -30,7 +30,7 @@ namespace Tests.Services.Live
         }
 
         [Fact]
-        public async Task GetAccountsByFilterAsyncOneToManyTest()
+        public async Task GetAccountsByFilterAsyncOneToManyAndTest()
         {
             Initialize();
             var filter = "BillingState:CA,British Columbia";
